@@ -68138,15 +68138,15 @@
 "xBG" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/bot_red,
-/obj/item/melee/transforming/vib_blade{
+/obj/item/kitchen/knife/combat{
 	pixel_x = 2;
 	pixel_y = 5
 	},
-/obj/item/melee/transforming/vib_blade{
+/obj/item/kitchen/knife/combat{
 	pixel_x = 9;
 	pixel_y = 5
 	},
-/obj/item/melee/transforming/vib_blade{
+/obj/item/kitchen/knife/combat{
 	pixel_x = 16;
 	pixel_y = 5
 	},
