@@ -2100,13 +2100,13 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/melee/transforming/vib_blade{
+/obj/item/kitchen/knife/combat{
 	pixel_x = 3
 	},
-/obj/item/melee/transforming/vib_blade{
+/obj/item/kitchen/knife/combat{
 	pixel_x = 9
 	},
-/obj/item/melee/transforming/vib_blade{
+/obj/item/kitchen/knife/combat{
 	pixel_x = 16
 	},
 /turf/open/floor/plasteel/dark,
