@@ -469,7 +469,7 @@ datum/status_effect/rebreathing/tick()
 	for(var/mob/living/simple_animal/slime/S in range(1, get_turf(owner)))
 		if(!(owner in S.Friends))
 			to_chat(owner, span_notice("[linked_extract] pulses gently as it communicates with [S]"))
-			S.Friends[owner] = 1
+			S.set_friendship(owner, 1)
 	return ..()
 
 /datum/status_effect/stabilized/orange
@@ -648,7 +648,7 @@ datum/status_effect/stabilized/blue/on_remove()
 
 /datum/status_effect/bluespacestabilization
 	id = "stabilizedbluespacecooldown"
-	duration = 1200
+	duration = 3 MINUTES
 	alert_type = null
 
 /datum/status_effect/stabilized/bluespace
@@ -678,6 +678,9 @@ datum/status_effect/stabilized/blue/on_remove()
 			to_chat(owner, span_notice("[linked_extract] will take some time to re-align you on the bluespace axis."))
 			do_sparks(5,FALSE,owner)
 			owner.apply_status_effect(/datum/status_effect/bluespacestabilization)
+			to_chat(owner, span_warning("You feel sick after [linked_extract] dragged you through bluespace."))
+			owner.Stun(1 SECONDS)
+			owner.dizziness += 30
 	healthcheck = owner.health
 	return ..()
 
@@ -756,11 +759,11 @@ datum/status_effect/stabilized/blue/on_remove()
 	colour = "red"
 
 /datum/status_effect/stabilized/red/on_apply()
-	owner.ignore_slowdown("slimestatus")
+	owner.add_movespeed_modifier("stabilized_red_speed", update=TRUE, priority=100, multiplicative_slowdown=-0.4, blacklisted_movetypes=(FLYING|FLOATING))
 	return ..()
 
 /datum/status_effect/stabilized/red/on_remove()
-	owner.unignore_slowdown("slimestatus")
+	owner.remove_movespeed_modifier("stabilized_red_speed")
 
 /datum/status_effect/stabilized/green
 	id = "stabilizedgreen"
@@ -859,7 +862,7 @@ datum/status_effect/stabilized/blue/on_remove()
 /datum/status_effect/stabilized/oil
 	id = "stabilizedoil"
 	colour = "oil"
-	examine_text = span_warning("SUBJECTPRONOUN smells of sulfur and oil!")
+	examine_text = span_warning("SUBJECTPRONOUN smells of sulphur and oil!")
 
 /datum/status_effect/stabilized/oil/tick()
 	if(owner.stat == DEAD)
