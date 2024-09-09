@@ -2635,7 +2635,7 @@
 	volume_rate = 200
 	},
 /turf/open/floor/plating/lavaland_baseturf,
-/area/jungleland/explored)
+/area/mine/maintenance)
 "Ho" = (
 /obj/structure/cable{
 	icon_state = "1-4"
